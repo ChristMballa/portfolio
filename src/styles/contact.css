@@ -1,0 +1,98 @@
+/* ========== CARTES DE CONTACT ========== */
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .4rem;
+  padding: 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(15, 30, 70, .05);
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(37, 99, 235, .45);
+  box-shadow: 0 18px 40px rgba(37, 99, 235, .16);
+}
+
+.contact-card__icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: .8rem;
+  border-radius: 14px;
+  background: var(--gradient);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, .3);
+}
+
+.contact-card__icon svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.contact-card p { color: var(--muted); font-size: .95rem; }
+
+.contact-card__cta {
+  margin-top: .8rem;
+  color: var(--accent-dark);
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+.contact-card:hover .contact-card__cta { text-decoration: underline; }
+
+/* ========== FORMULAIRE ========== */
+.form {
+  max-width: 640px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.field { display: grid; gap: .45rem; }
+
+.field label { font-size: .9rem; font-weight: 500; }
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: .85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.field textarea { min-height: 150px; resize: vertical; }
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, .15);
+}
+
+.form .btn { justify-self: start; }
+
+.form__note { color: var(--muted); font-size: .85rem; }
+
+/* ========== PAGE CONTACT : espace sous la navbar ========== */
+.page-contact .panel:first-child { margin-top: 3rem; }

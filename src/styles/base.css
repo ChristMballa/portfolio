@@ -1,0 +1,76 @@
+/* ========== 1. VARIABLES (ta palette, modifiable ici uniquement) ========== */
+:root {
+  --bg: #f6f4ee;              /* blanc cassé */
+  --surface: #ffffff;
+  --border: rgba(15, 30, 70, 0.1);
+  --text: #0f1b33;            /* bleu nuit, pour le texte */
+  --muted: #5a6783;
+
+  --accent: #2563eb;          /* bleu principal */
+  --accent-dark: #1d4ed8;     /* bleu foncé (textes colorés) */
+  --accent-2: #38bdf8;        /* bleu ciel */
+  --gradient: linear-gradient(135deg, var(--accent-dark), var(--accent-2));
+
+  --radius: 14px;
+  --container: 1120px;
+  --font: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", var(--font);
+}
+
+/* ========== 2. RESET ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ========== 3. MOTIFS DE FOND ========== */
+/* Grille de points bleus, estompée sur les bords */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-image: radial-gradient(rgba(37, 99, 235, 0.22) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 100%);
+          mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 100%);
+}
+
+/* Halos de couleur floutés */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(500px circle at 15% 10%, rgba(37, 99, 235, 0.14), transparent 60%),
+    radial-gradient(450px circle at 85% 25%, rgba(56, 189, 248, 0.18), transparent 60%);
+  pointer-events: none;
+}
+
+/* ========== 4. UTILITAIRES ========== */
+.container { width: min(100% - 2.5rem, var(--container)); margin-inline: auto; }
+
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
+
+/* Animation au scroll : état initial caché, puis .is-visible */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
